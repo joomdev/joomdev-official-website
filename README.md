@@ -4,7 +4,7 @@ We’re rebuilding the [official JoomDev website](https://www.joomdev.com/) as a
 
 ## Project status
 
-The starter project has been built and verified locally. This repository currently holds the onboarding documentation. The local setup below applies once the Astro source and lockfile are available on GitHub.
+The Astro starter and npm lockfile are included in this repository. Use the setup below to run the site locally.
 
 ## Get started
 
@@ -12,7 +12,7 @@ Everyone needs access to this private repository. Ask the project owner for acce
 
 ### Developers
 
-Install Git and Node.js 22.12 or newer with npm. Node.js 24 is the version used for the local verification. Once the source is on GitHub, run:
+Install Git and Node.js 22.12 or newer with npm. Node.js 24 is the version used for the local verification. From a terminal, run:
 
 ```bash
 git clone https://github.com/joomdev/joomdev-official-website.git

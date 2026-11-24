@@ -1,0 +1,21 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: #172338;
+  background: #fff;
+}
+
+body { margin: 0; }
+a { color: #1655a5; }
+a:focus-visible { outline: 3px solid #1655a5; outline-offset: 4px; }
+h1, h2 { line-height: 1.2; }
+h1 { font-size: clamp(2rem, 5vw, 3.75rem); max-width: 21ch; }
+p { max-width: 65ch; }
+
+.wrap { width: min(70rem, calc(100% - 2rem)); margin-inline: auto; }
+.navigation, nav { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.navigation { justify-content: space-between; }
+.brand { font-weight: 750; }
+.site-header, .site-footer { padding-block: 1rem; background: #f4f7fb; }
+main { padding-block: clamp(2rem, 7vw, 6rem); min-height: 55vh; }
+.skip-link:not(:focus) { position: absolute; left: -100vw; }

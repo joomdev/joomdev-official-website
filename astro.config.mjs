@@ -1,0 +1,11 @@
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+
+const indexable = process.env.SITE_INDEXABLE === 'true';
+
+export default defineConfig({
+  site: 'https://www.joomdev.com',
+  output: 'static',
+  trailingSlash: 'always',
+  integrations: indexable ? [sitemap()] : [],
+});

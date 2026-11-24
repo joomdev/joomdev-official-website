@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const indexable = process.env.SITE_INDEXABLE === 'true' && !noindex;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | JoomDev</title>
+    <meta name="description" content={description} />
+    {indexable ? <link rel="canonical" href={canonical} /> : <meta name="robots" content="noindex" />}
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap navigation">
+        <a class="brand" href="/">JoomDev</a>
+        <nav aria-label="Main navigation">
+          <a href="/services/">Services</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap" id="content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap"><a href="/">JoomDev</a></div>
+    </footer>
+  </body>
+</html>
