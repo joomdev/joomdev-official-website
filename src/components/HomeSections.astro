@@ -1,0 +1,356 @@
+---
+import { sitePath } from '../utils/site-path';
+const services = [
+  { title: 'Web & Ecommerce', description: 'Build or rebuild your website, launch a store, and give your team a site it can manage.', href: '/services/#web', detail: 'WordPress · Joomla · Ecommerce' },
+  { title: 'App Development', description: 'Create a web or mobile app for your customers or your team.', href: '/services/#apps', detail: 'Web apps · Mobile apps' },
+  { title: 'AI Development', description: 'Put AI to work inside the products and systems you already use.', href: '/services/ai-integration/', detail: 'Consulting · Agents · Integration' },
+  { title: 'CRM & Automation', description: 'Connect your CRM, internal tools, and day-to-day workflows.', href: '/services/#systems', detail: 'Low-code · CRM · Process automation' },
+  { title: 'Cloud & Data', description: 'Plan your AWS setup and turn operational data into reporting your team can use.', href: 'https://www.joomdev.com/services/aws-cloud-consulting-services/', detail: 'AWS · Data science · BI' },
+];
+const projectBase = 'https://www.joomdev.com/case-studies/';
+const projects = [
+  { name: 'The New Utility', category: 'Web Development', title: 'A clearer website for a solar installer', detail: 'A redesign that makes it easier to explore solar options and request an estimate.', visual: 'solar', image: '/work/new-utility.jpg', slug: 'transformed-the-new-utilitys-website' },
+  { name: 'Juice Financial', category: 'App Development', title: 'A simpler way for employers to pay their teams', detail: 'An app for inviting, enrolling, and paying employees from one place.', visual: 'juice', image: 'https://www.joomdev.com/wp-content/uploads/2023/05/juice-landing-img-2.png', slug: 'juice-finance' },
+  { name: 'Surv', category: 'CRM & Integrations', title: 'Connected communication and job data', detail: 'GoHighLevel, Housecall Pro, and Aircall brought into a connected workflow.', visual: 'surv', image: '', slug: 'transforming-communication-automation-data-syncing-for-wesurv' },
+  { name: 'Infinity Energy', category: 'Workflow Automation', title: 'More prospects showed up for appointments', detail: 'Automatic confirmations and reminders helped raise the appointment show-up rate from 60% to 85%.', visual: 'infinity', image: '', slug: 'transformed-infinity-energys-sales-pipeline' },
+  { name: 'SolarDynamite', category: 'Lead Automation', title: 'Eight hours saved every week', detail: 'Lead data moves from GoHighLevel to Google Sheets without manual copying.', visual: 'dynamite', image: '', slug: 'how-solardynamite-saved-8-hours-weekly-with-automation' },
+  { name: 'Lead Reactivation', category: 'GoHighLevel', title: 'A second chance for 8,000+ dormant leads', detail: 'A GoHighLevel setup built to nurture and re-engage an existing lead database.', visual: 'reactivation', image: '', slug: 'how-joomdev-engineered-a-high-performance-gohighlevel-ecosystem-to-reactivate-8000-leads' },
+];
+const platformRows = [
+  [
+    ['WordPress', 'wordpress.org'], ['Joomla', 'joomla.org'], ['Shopify', 'shopify.com'],
+    ['WooCommerce', 'woocommerce.com'], ['GoHighLevel', 'gohighlevel.com'],
+    ['Salesforce', 'salesforce.com'], ['HubSpot', 'hubspot.com'], ['Zoho', 'zoho.com'],
+    ['Databricks', 'databricks.com'], ['Snowflake', 'snowflake.com'],
+    ['MoEngage', 'moengage.com'], ['Boomi', 'boomi.com'],
+    ['Docker', 'docker.com'], ['Oracle', 'oracle.com'],
+  ],
+  [
+    ['Quickbase', 'quickbase.com'], ['Caspio', 'caspio.com'], ['Smartsheet', 'smartsheet.com'],
+    ['Follow Up Boss', 'followupboss.com'], ['Zapier', 'zapier.com'], ['n8n', 'n8n.io'],
+    ['Make', 'make.com'], ['Pipedream', 'pipedream.com'], ['AWS', 'aws.amazon.com'],
+    ['Red Hat', 'redhat.com'], ['Sabre', 'sabre.com'], ['Stripe', 'stripe.com'],
+    ['Cloudinary', 'cloudinary.com'], ['OpenAI', 'openai.com'],
+  ],
+];
+const highLevelBadges = [
+  ['ai-voice', 'AI Voice'],
+  ['automated-swag-store', 'Automated Swag Store'],
+  ['course-creator', 'Course Creator'],
+  ['local-hero', 'Local Hero'],
+  ['paid-ads', 'Paid Ads'],
+  ['sm-manager', 'Social Media Manager'],
+  ['funnel-builder', 'Funnel Builder'],
+  ['ai-tech', 'AI Tech'],
+  ['hipaa', 'HIPAA Training'],
+];
+const workflows = [
+  { label: 'Follow up with website leads', steps: ['Website inquiry', 'CRM record', 'Assigned follow-up'], detail: 'Capture each inquiry, add it to your CRM, and assign the next action to the right person.' },
+  { label: 'Route internal approvals', steps: ['Quickbase request', 'Approval routing', 'Team notification'], detail: 'Send a request to the right approver and let the team know when a decision is made.' },
+  { label: 'Capture inbound calls', steps: ['Incoming call', 'AI receptionist', 'CRM call log'], detail: 'Capture the caller’s request and pass the details to the team that can help.' },
+];
+---
+<section class="section shell services" aria-labelledby="service-title">
+  <div class="section-head">
+    <div><h2 id="service-title">Start With What You Need to Build</h2><p>A new website, a mobile app, or a better way to run your business. We can build it and connect it to the tools you already use.</p></div>
+    <a href={sitePath('/services/')}>Explore all services <span aria-hidden="true">↗</span></a>
+  </div>
+  <nav class="story-path" aria-label="Explore the homepage">
+    <a href="#service-title">What we build</a>
+    <a href="#workflow-title">How it connects</a>
+    <a href="#work-title">See it in practice</a>
+  </nav>
+  <ul class="service-grid" data-home-reveal>
+    {services.map(({ title, description, href, detail }, i) => (
+      <li class:list={{ featured: i === 0 }}>
+        <a href={sitePath(href)}>
+          <span class="detail">{detail}</span>
+          <h3>{title}</h3><p>{description}</p>
+          <div class="service-art" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+<section class="section platform-section" aria-labelledby="platform-title">
+  <div class="shell">
+    <div class="section-head"><div><h2 id="platform-title">Bring the Tools You Already Use</h2><p>Start with your website, CRM, or internal tools. We’ll help connect what you have and build what’s missing.</p></div></div>
+    <label class="motion-toggle"><input type="checkbox" /> Pause platform logos</label>
+    <div class="logo-rows">
+      {platformRows.map((platforms, index) => (
+        <div class:list={['logo-window', { reverse: index === 1 }]}>
+          <div class="logo-track">
+            {[false, true].map((duplicate) => (
+              <ul class="logo-list platform-list" aria-hidden={duplicate || undefined}>
+                {platforms.map(([name, domain]) => (
+                  <li>
+                    <img src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`} alt="" width="40" height="40" loading="lazy" referrerpolicy="no-referrer" />
+                    <span>{name}</span>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="section workflow" aria-labelledby="workflow-title">
+  <div class="shell">
+    <div class="section-head">
+      <div><h2 id="workflow-title">How Your Tools Work Together</h2><p>See what happens after a form is submitted, a request is sent, or a customer calls.</p></div>
+      <a class="story-next" href="#work-title">See Real Client Projects <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="workflow-scenarios" data-home-reveal>
+      {workflows.map(({ label, steps, detail }) => (
+        <article class="scenario">
+          <h3>{label}</h3>
+          <ol aria-label={label}>{steps.map((step) => <li><span aria-hidden="true"></span>{step}</li>)}</ol>
+          <p>{detail}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="section work" aria-labelledby="work-title">
+  <div class="shell">
+    <div class="section-head">
+      <div><h2 id="work-title">Selected Work</h2><p>Six projects across web development, apps, CRM, and automation.</p></div>
+      <a href={projectBase}>View All Case Studies <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="project-gallery" data-home-reveal>
+      {projects.map(({ name, category, title, detail, visual, image, slug }) => (
+        <article>
+          <a class="project-link" href={projectBase + slug + '/'} aria-label={name + ': ' + title}>
+            <div class:list={['project-art', visual]} aria-hidden="true">
+              {image ? <img src={sitePath(image)} alt="" width="640" height="360" loading="lazy" /> :
+                visual === 'surv' ? <div class="surv-art"><img src={sitePath('/clients/wesurv.svg')} width="126" height="36" alt="" loading="lazy" /><span></span><span></span><span></span></div> :
+                <strong>{visual === 'infinity' ? '60% → 85%' : visual === 'dynamite' ? '8 hrs / week' : '8,000+'}</strong>}
+            </div>
+            <div class="project-copy"><span class="detail">{name} · {category}</span><h3>{title}</h3><p>{detail}</p><span class="case-link">Read Case Study <span aria-hidden="true">↗</span></span></div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="section testimonials" aria-labelledby="testimonials-title">
+  <div class="shell">
+    <div class="section-head"><div><h2 id="testimonials-title">Hear From Our Clients</h2><p>Hear directly from Tanesha Owens, founder of All About You Advocates, and read what other clients say about working with JoomDev.</p></div></div>
+    <div class="testimonial-grid">
+      <article class="video-story">
+        <div class="video-stage" data-testimonial-player>
+          <a class="video-trigger" href="https://www.youtube.com/watch?v=iJj0ajslBbw">
+            <img src={sitePath('/proof/tanesha-owens.jpg')} alt="" width="800" height="450" loading="lazy" />
+            <span class="video-play"><span aria-hidden="true">▶</span> Watch Testimonial</span>
+          </a>
+        </div>
+        <div class="video-credit"><h3>Tanesha Owens</h3><p>Founder, All About You Advocates</p><a href="https://www.youtube.com/watch?v=iJj0ajslBbw">Watch on YouTube <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <div class="quotes">
+        <figure><blockquote>“We could not be more pleased with the kind of services that JoomDev had provided us”</blockquote><figcaption>Achilles Tzoulafis · Infinity Solar Systems</figcaption></figure>
+        <figure><blockquote>“Their attention doesn’t stop after project completion”</blockquote><figcaption>Matthew Hildebrand · Infinity Roofing</figcaption></figure>
+        <figure><blockquote>“We knew that our search was over.”</blockquote><figcaption>Alex Shvarts · FundKite</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section shell credentials" aria-labelledby="credentials-title">
+  <div class="section-head">
+    <div><h2 id="credentials-title">Certifications &amp; Platform Credentials</h2><p>Explore our team’s HighLevel credentials, from AI voice and funnel building to campaign setup, alongside our other published platform badges.</p></div>
+  </div>
+  <label class="motion-toggle"><input type="checkbox" /> Pause credential logos</label>
+  <div class="logo-rows">
+    <div class="logo-window">
+      <div class="logo-track">
+        {[false, true].map((duplicate) => (
+          <ul class="logo-list credential-list" aria-hidden={duplicate || undefined}>
+            <li><img src={sitePath('/proof/highlevel-admin.png')} alt="HighLevel Certified Admin" width="176" height="176" loading="lazy" /></li>
+            {highLevelBadges.map(([file, name]) => <li><img src={`https://ghlhero.com/wp-content/uploads/2026/08/${file}.webp`} alt={`HighLevel ${name} badge`} width="128" height="128" loading="lazy" /></li>)}
+            <li><img src={sitePath('/proof/partner-1.jpg')} alt="Moodle" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-2.jpg')} alt="Joomla Solution Developer" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-3.jpg')} alt="Bing Ads Accredited Professional" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-4.jpg')} alt="Google Partner" width="176" height="100" loading="lazy" /></li>
+          </ul>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section contact" aria-labelledby="contact-title">
+  <div class="shell contact-panel">
+    <div><h2 id="contact-title">Let’s Talk About Your Project</h2><p>Tell us what you want to build and which tools you use. We’ll talk through what to tackle first.</p>
+      <div class="contact-actions"><a class="contact-link" href={sitePath('/contact/')}>Discuss Your Project <span aria-hidden="true">↗</span></a><a class="contact-email" href="mailto:naveen@joomdev.com">Email JoomDev</a></div>
+    </div>
+    <div class="contact-art" aria-hidden="true"><span></span><span></span><span></span></div>
+  </div>
+</section>
+<style>
+  .shell { width: min(73rem, calc(100% - 2.5rem)); margin-inline: auto; }
+  .section { padding-block: clamp(3rem, 6.4vw, 5.75rem); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 1rem; margin-bottom: clamp(1.6rem, 4vw, 3rem); }
+  h2, h3, p { margin: 0; }
+  h2 { font-size: clamp(1.95rem, 3.25vw, 3.15rem); letter-spacing: -.027em; font-weight: 620; line-height: 1.12; text-wrap: balance; }
+  h3 { font-size: clamp(1.2rem, 1.85vw, 1.75rem); line-height: 1.2; letter-spacing: -.018em; }
+  h2 + p, h3 + p { margin-top: .7rem; }
+  a { text-underline-offset: .25em; }
+  .section-head > a { font-size: .9rem; font-weight: 700; white-space: nowrap; }
+  h2[id] { scroll-margin-top: 1.25rem; }
+  .section-head p { color: #425574; max-width: 56ch; }
+  .story-path { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .5rem; padding: .7rem 0 1.1rem; margin-bottom: .7rem; }
+  .story-path a { position: relative; padding: .9rem .15rem 0; color: #244890; border-top: 1px solid #b7c9eb; font-size: .86rem; font-weight: 650; text-decoration: none; }
+  .story-path a::before { content: ''; position: absolute; top: -.23rem; left: .15rem; width: .4rem; height: .4rem; border-radius: 50%; background: #395fcb; box-shadow: 0 0 0 4px #e7eeff; }
+  .story-path a:hover { text-decoration: underline; }
+  .service-grid { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: .8rem; list-style: none; padding: 0; margin: 0; }
+  .service-grid li { grid-column: span 2; display: flex; border: 1px solid #dce5f4; border-radius: 1.35rem; background: #f3f6ff; overflow: hidden; }
+  .service-grid li:nth-child(2) { grid-column: span 2; background: #ecf2ff; }
+  .service-grid a { display: flex; flex-direction: column; justify-content: end; position: relative; isolation: isolate; box-sizing: border-box; width: 100%; min-height: 14rem; padding: 1.4rem 2rem 1.4rem 1.4rem; text-decoration: none; color: inherit; }
+  .service-grid a:focus-visible { outline-offset: -5px; }
+  .service-grid .featured { grid-column: span 4; background: radial-gradient(ellipse at 90% -10%,#3054c5,#0c1839 72%); color: #fff; border-color: transparent; }
+  .service-grid .featured a, .service-grid li:nth-child(2) a { min-height: clamp(16rem, 30vw, 22rem); }
+  .service-grid .featured h3 { font-size: clamp(1.65rem, 3.15vw, 2.65rem); }
+  .service-grid .featured p { color: #d6e2ff; max-width: 37ch; }
+  .service-grid .featured .detail { color: #b8d1ff; }
+  .detail { display: block; margin-bottom: .65rem; color: #405785; font-size: .78rem; font-weight: 680; }
+  .arrow { display: grid; place-items: center; position: absolute; top: 1rem; right: 1rem; width: 2rem; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; transition: transform .25s; }
+  .service-grid a:hover .arrow { transform: rotate(12deg); }
+  .service-art { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .service-art span { position: absolute; border: 1px solid #7196e54f; border-radius: 2rem; width: 9rem; height: 9rem; right: -2rem; top: -4rem; transform: rotate(34deg); transition: transform .45s ease; }
+  .service-art span:nth-child(2) { right: 0; top: -5rem; }
+  .service-art span:nth-child(3) { right: 2rem; top: -6rem; }
+  .featured .service-art span { width: clamp(9rem, 22vw, 19rem); height: clamp(9rem, 22vw, 19rem); right: -1rem; top: -6rem; background: linear-gradient(145deg,#8faeff30,#82a2ff05); }
+  .featured .service-art span:nth-child(2) { right: 3rem; top: -8rem; }
+  .featured .service-art span:nth-child(3) { right: 7rem; top: -10rem; }
+  .service-grid a:hover .service-art span { transform: translate(-.6rem,.6rem) rotate(38deg); }
+  .work { background: #f5f7fc; }
+  .project-gallery, .workflow-scenarios { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+  article { border: 1px solid #dce4ef; border-radius: 1.2rem; overflow: hidden; background: white; }
+  .project-link { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; }
+  .project-link:focus-visible { outline-offset: -4px; }
+  .project-art { display: grid; place-items: center; aspect-ratio: 1.95; position: relative; overflow: hidden; color: #eef5ff; background: radial-gradient(circle at 75% 25%,#2f57b5,#112756 80%); }
+  .project-art > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .project-art.juice { background: #e1eaff; }
+  .project-art.juice > img { object-fit: contain; }
+  .project-art strong { font-size: clamp(1.65rem,4vw,3rem); letter-spacing: -.045em; z-index: 1; }
+  .project-art:not(.solar,.juice)::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(135deg,transparent 0 12px,#b6ccff18 12px 13px); mask-image: linear-gradient(135deg, transparent, black); pointer-events: none; }
+  .project-art.surv { background: #dce9ff; }
+  .project-art.dynamite { background: radial-gradient(circle at 75% 25%,#294e7f,#0e2138 80%); }
+  .project-art.reactivation { background: radial-gradient(circle at 75% 25%,#433794,#1c204b 80%); }
+  .surv-art { display: flex; align-items: center; gap: .55rem; z-index: 1; }
+  .surv-art img { width: 5rem; height: auto; margin-right: .35rem; }
+  .surv-art span { width: .55rem; aspect-ratio: 1; border-radius: 50%; border: 1px solid #1d4aab; }
+  .surv-art span:nth-child(3) { background: #1d4aab; }
+  .project-copy { flex: 1; display: flex; flex-direction: column; align-items: start; padding: clamp(1rem,2.4vw,1.5rem); }
+  .project-copy p { color: #425574; font-size: .91rem; }
+  .project-copy .case-link { margin-top: auto; padding-top: .9rem; color: #224bba; font-size: .84rem; font-weight: 700; }
+  .project-link:hover .case-link, .project-link:focus-visible .case-link { text-decoration: underline; }
+  .workflow { position: relative; isolation: isolate; background: #091327; color: #f4f8ff; overflow: hidden; }
+  .workflow::before { content: ''; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 80% 90%,#204184,transparent 65%), radial-gradient(#769fff48 1px, transparent 1px) 0 0 / 24px 24px; mask-image: linear-gradient(90deg, transparent, #000 50%); }
+  .workflow .section-head p, .scenario p { color: #c7d8f6; }
+  .workflow .story-next { color: #d1e2ff; }
+  .scenario { background: #102345; color: #f4f8ff; padding: clamp(1rem,2vw,1.6rem); border-color: #42618f; }
+  .scenario h3 { font-size: 1.18rem; }
+  .scenario p { margin-top: 1.15rem; font-size: .9rem; }
+  .scenario ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); list-style: none; margin: 1.4rem 0 0; padding: 0; }
+  .scenario li { position: relative; display: grid; align-content: start; justify-items: center; gap: .55rem; padding: .15rem; text-align: center; font-size: .75rem; line-height: 1.35; }
+  .scenario li span { width: .67rem; height: .67rem; border-radius: 50%; background: #abd1ff; box-shadow: 0 0 .65rem #8bb7ff; z-index: 1; }
+  .scenario li + li::before { content: ''; position: absolute; top: .47rem; right: 50%; width: 100%; border-top: 1px solid #7ea4ed; }
+  .platform-section { background: #0a1328; color: #f6f8ff; }
+  .platform-section .section-head p { color: #c5d3ee; }
+  .motion-toggle { display: inline-flex; align-items: center; gap: .45rem; margin-bottom: .8rem; font-size: .82rem; cursor: pointer; }
+  .motion-toggle input { accent-color: #446af5; }
+  .logo-rows { display: grid; gap: .8rem; min-width: 0; }
+  .logo-window { min-width: 0; overflow: clip; }
+  .platform-section .logo-window { mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent); }
+  .logo-track { display: flex; width: max-content; animation: logo-loop 64s linear infinite; }
+  .reverse .logo-track { animation-direction: reverse; }
+  .logo-window:hover .logo-track, .motion-toggle:has(input:checked) + .logo-rows .logo-track { animation-play-state: paused; }
+  .logo-list { display: flex; gap: .8rem; flex: none; margin: 0; padding: 0 .8rem 0 0; list-style: none; }
+  .logo-list li { display: grid; place-content: center; justify-items: center; text-align: center; width: clamp(7.5rem, 15vw, 10.25rem); border-radius: .75rem; }
+  .platform-list li { min-height: 6.65rem; gap: .6rem; background: #15213c; border: 1px solid #314368; font-size: .85rem; font-weight: 620; }
+  .platform-list img { object-fit: contain; filter: grayscale(1); transition: filter .2s ease; }
+  .platform-list li:hover img { filter: grayscale(0); }
+  @keyframes logo-loop { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .motion-toggle { display: none; }
+    .platform-section .logo-window { mask-image: none; }
+    .logo-track { width: auto; animation: none; }
+    .logo-list { flex: 1; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(7.5rem,100%),1fr)); padding: 0; }
+    .logo-list[aria-hidden="true"] { display: none; }
+    .logo-list li { width: auto; }
+    .platform-list img { transition: none; }
+  }
+  .testimonials { background: #f2f5fb; }
+  .testimonial-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 1rem; }
+  .video-stage { aspect-ratio: 16/9; background: #0b1933; position: relative; }
+  .video-trigger { display: grid; place-items: center; height: 100%; color: #fff; text-decoration: none; isolation: isolate; }
+  .video-trigger img, .video-stage :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-trigger img { object-fit: cover; object-position: center 35%; filter: brightness(.64); z-index: -1; }
+  .video-play { background: #163df5; color: #fff; border-radius: 2rem; padding: .7rem 1.05rem; font-weight: 700; }
+  .video-play span { margin-right: .35rem; }
+  .video-trigger:hover .video-play { background: #254aff; }
+  .video-credit { padding: 1rem 1.25rem; }
+  .video-credit p { color: #425574; margin: .25rem 0 .55rem; }
+  .video-credit a { font-size: .86rem; }
+  .quotes { display: grid; gap: 1rem; }
+  .quotes figure { margin: 0; padding: clamp(1.2rem,2.5vw,2rem); border: 1px solid #dce4ef; background: #fff; border-radius: 1.15rem; align-content: center; }
+  .quotes blockquote { margin: 0; color: #182a48; font-size: clamp(1.1rem,1.8vw,1.4rem); line-height: 1.4; }
+  .quotes figcaption { margin-top: 1rem; color: #455b80; font-size: .86rem; }
+  .credential-list li { min-height: 8rem; border: 1px solid #dde6f2; background: #fff; place-content: stretch; align-items: center; }
+  .credential-list img { width: 82%; height: 6.2rem; object-fit: contain; }
+  .contact { color: #f5f8ff; background: #edf3ff; }
+  .contact-panel { position: relative; isolation: isolate; overflow: hidden; box-sizing: border-box; padding: clamp(1.6rem,5vw,4.25rem); background: radial-gradient(ellipse at 95% 100%,#253fa7,#101e46 65%); border-radius: 1.5rem; }
+  .contact-panel p { color: #dbe5ff; max-width: 49ch; }
+  .contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem 1.15rem; margin-top: 1.35rem; }
+  .contact-link { display: inline-block; padding: .75rem 1.2rem; border-radius: 3rem; background: white; color: #102981; text-decoration: none; font-weight: 680; }
+  .contact-email { color: #f3f6ff; }
+  .contact-actions a:focus-visible, .workflow a:focus-visible { outline-color: white; }
+  .contact-art { position: absolute; z-index: -1; inset: 0; pointer-events: none; opacity: .52; mask-image: linear-gradient(90deg,transparent 48%,black); }
+  .contact-art span { position: absolute; right: -2rem; bottom: -11rem; width: 30rem; height: 30rem; border: 1px solid #9cbbffc0; border-radius: 4rem; transform: rotate(38deg); }
+  .contact-art span:nth-child(2) { right: 2rem; bottom: -14rem; }
+  .contact-art span:nth-child(3) { right: 6rem; bottom: -17rem; }
+  @media (max-width: 950px) { .project-gallery, .workflow-scenarios { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (max-width: 720px) {
+    .service-grid, .project-gallery, .workflow-scenarios { grid-template-columns: 1fr; }
+    .service-grid li, .service-grid li:nth-child(2), .service-grid .featured { grid-column: auto; }
+    .service-grid a { min-height: 10.5rem; }
+    .service-grid .featured a, .service-grid li:nth-child(2) a { min-height: 13rem; }
+  }
+  @media(prefers-reduced-motion: reduce) {
+    .arrow, .service-art span { transition: none; }
+  }
+</style>
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  const video = document.querySelector<HTMLAnchorElement>('.video-trigger');
+  video?.addEventListener('click', (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const player = document.createElement('iframe');
+    player.src = 'https://www.youtube-nocookie.com/embed/iJj0ajslBbw?autoplay=1';
+    player.title = 'Tanesha Owens on working with JoomDev';
+    player.allow = 'autoplay; encrypted-media; picture-in-picture';
+    player.allowFullscreen = true;
+    video.replaceWith(player);
+    player.focus();
+  });
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    document.querySelectorAll('[data-home-reveal]').forEach((group) => {
+      ScrollTrigger.create({
+        trigger: group,
+        start: 'top 92%',
+        once: true,
+        onEnter: () => gsap.from(group.children, {
+          y: 12, opacity: .82, duration: .45, stagger: .05, ease: 'power2.out', clearProps: 'transform,opacity',
+        }),
+      });
+    });
+  });
+
+</script>
