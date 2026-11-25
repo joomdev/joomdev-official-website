@@ -1,0 +1,24 @@
+---
+interface Props {
+  industry: number;
+}
+const { industry } = Astro.props;
+const drawings = [
+  'M36 104h108l-14-46H50z M45 81h90 M74 58l-8 46 M106 58l8 46 M90 104v15 M67 119h46 M133 32a11 11 0 1 0 22 0 11 11 0 0 0-22 0z',
+  'M40 56l50-28 50 28z M45 109h90 M51 61v42 M77 61v42 M103 61v42 M129 61v42 M39 116h102',
+  'M41 71l49-39 49 39 M53 66v51h74V66 M79 117V87h22v30 M110 48V35h15v25',
+  'M30 60l60-27 60 27-60 27z M53 72v28c22 14 52 14 74 0V72 M150 61v37',
+  'M49 55h82l9 61H40z M69 61V46a21 21 0 0 1 42 0v15 M72 86h36 M90 76v21',
+  'M56 29h68a15 15 0 0 1 15 15v57a15 15 0 0 1-15 15H56a15 15 0 0 1-15-15V44a15 15 0 0 1 15-15z M90 52v41 M69 72h42',
+  'M40 115V49h61v66 M101 70h39v45 M30 115h120 M56 65h9 M78 65h9 M56 82h9 M78 82h9 M112 85h15 M112 99h15',
+  'M49 35h60l22 22v59H49z M109 35v22h22 M65 72h50 M65 88h50 M65 102h35',
+  'M45 39h90v67H45z M45 57h90 M56 48h2 M65 48h2 M74 48h2 M69 80l11 9-11 9 M111 80l-11 9 11 9 M94 76l-8 26',
+  'M31 55h74v48H31z M105 70h24l20 22v11h-44 M126 71v21h23 M46 103a10 10 0 1 0 20 0 10 10 0 0 0-20 0z M116 103a10 10 0 1 0 20 0 10 10 0 0 0-20 0z',
+];
+---
+<svg viewBox="24 20 136 108" aria-hidden="true" focusable="false">
+  <path d={drawings[industry]} fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+<style>
+  svg { width: 72%; height: auto; color: #c6deff; }
+</style>

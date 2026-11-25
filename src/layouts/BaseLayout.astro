@@ -1,13 +1,15 @@
 ---
 import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  immersive?: boolean;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, immersive = false } = Astro.props;
 const indexable = process.env.SITE_INDEXABLE === 'true' && !noindex;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -22,7 +24,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-    <header class="site-header">
+    {!immersive && <header class="site-header">
       <div class="wrap navigation">
         <a class="brand" href="/">JoomDev</a>
         <nav aria-label="Main navigation">
@@ -30,12 +32,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           <a href="/contact/">Contact</a>
         </nav>
       </div>
-    </header>
-    <main class="wrap" id="content">
+    </header>}
+    <main class:list={immersive ? "immersive" : "wrap"} id="content">
       <slot />
     </main>
-    <footer class="site-footer">
-      <div class="wrap"><a href="/">JoomDev</a></div>
-    </footer>
+    <SiteFooter />
   </body>
 </html>

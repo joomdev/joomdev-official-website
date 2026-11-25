@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pages = [
+  ['/', 'Home'],
+  ['/services/', 'Services'],
+  ['/services/ai-integration/', 'AI Integration'],
+  ['/#industries-title', 'Industries'],
+  ['/#work-title', 'Case Studies'],
+  ['/contact/', 'Contact Us'],
+];
+---
+<BaseLayout title="Sitemap | JoomDev" description="Find your way around the JoomDev website.">
+  <section>
+    <h1>Sitemap</h1>
+    <ul>{pages.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
+  </section>
+</BaseLayout>
