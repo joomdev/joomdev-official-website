@@ -1,5 +1,6 @@
 ---
 import IndustryIllustration from './IndustryIllustration.astro';
+import { sitePath } from '../utils/site-path';
 const services = [
   { title: 'Web & Ecommerce', description: 'Build or rebuild your website, launch a store, and give your team a site it can manage.', href: '/services/#web', detail: 'WordPress · Joomla · Ecommerce' },
   { title: 'App Development', description: 'Create a web or mobile app for your customers or your team.', href: '/services/#apps', detail: 'Web apps · Mobile apps' },
@@ -91,7 +92,7 @@ const workflows = [
 <section class="section shell services" aria-labelledby="service-title">
   <div class="section-head">
     <div><h2 id="service-title">Start With What You Need to Build</h2><p>A new website, a mobile app, or a better way to run your business. We can build it and connect it to the tools you already use.</p></div>
-    <a href={'/services/'}>Explore all services <span aria-hidden="true">↗</span></a>
+    <a href={sitePath('/services/')}>Explore all services <span aria-hidden="true">↗</span></a>
   </div>
   <nav class="story-path" aria-label="Explore the homepage">
     <a href="#service-title">What we build</a>
@@ -101,7 +102,7 @@ const workflows = [
   <ul class="service-grid" data-home-reveal>
     {services.map(({ title, description, href, detail }, i) => (
       <li class:list={{ featured: i === 0 }}>
-        <a href={href}>
+        <a href={sitePath(href)}>
           <span class="detail">{detail}</span>
           <h3>{title}</h3><p>{description}</p>
           <div class:list={['service-art', `service-art-${i}`]} aria-hidden="true">
@@ -165,11 +166,11 @@ const workflows = [
           <summary>{name}<span aria-hidden="true">↗</span></summary>
           <div class="industry-panel">
             <div class="industry-illustration" aria-hidden="true">
-              <img src={`/industries/${photo}`} alt="" loading="lazy" decoding="async" />
+              <img src={sitePath(`/industries/${photo}`)} alt="" loading="lazy" decoding="async" />
               <div class="industry-badge"><IndustryIllustration industry={index} /></div>
             </div>
             <div class="industry-copy"><h3>{title}</h3><p>{copy}</p>
-              <a href={link ? projectBase + link + '/' : '/contact/'}>{link ? 'Read the Case Study' : 'Discuss a Project'} <span aria-hidden="true">↗</span></a>
+              <a href={link ? projectBase + link + '/' : sitePath('/contact/')}>{link ? 'Read the Case Study' : 'Discuss a Project'} <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </details>
@@ -188,8 +189,8 @@ const workflows = [
         <article>
           <a class="project-link" href={projectBase + slug + '/'} aria-label={name + ': ' + title}>
             <div class:list={['project-art', visual]} aria-hidden="true">
-              {image ? <img src={image} alt="" width="640" height="360" loading="lazy" /> :
-                visual === 'surv' ? <div class="surv-art"><img src={'/clients/wesurv.svg'} width="126" height="36" alt="" loading="lazy" /><span></span><span></span><span></span></div> :
+              {image ? <img src={sitePath(image)} alt="" width="640" height="360" loading="lazy" /> :
+                visual === 'surv' ? <div class="surv-art"><img src={sitePath('/clients/wesurv.svg')} width="126" height="36" alt="" loading="lazy" /><span></span><span></span><span></span></div> :
                 <strong>{visual === 'infinity' ? '60% → 85%' : visual === 'dynamite' ? '8 hrs / week' : '8,000+'}</strong>}
             </div>
             <div class="project-copy"><p class="project-meta"><span>{category}</span><strong>{name}</strong></p><h3>{title}</h3><p>{detail}</p><span class="case-link">Read Case Study <span aria-hidden="true">↗</span></span></div>
@@ -206,7 +207,7 @@ const workflows = [
       <article class="video-story">
         <div class="video-stage" data-testimonial-player>
           <a class="video-trigger" href="https://www.youtube.com/watch?v=iJj0ajslBbw">
-            <img src={'/proof/tanesha-owens.jpg'} alt="" width="800" height="450" loading="lazy" />
+            <img src={sitePath('/proof/tanesha-owens.jpg')} alt="" width="800" height="450" loading="lazy" />
             <span class="video-play"><span aria-hidden="true">▶</span> Watch Testimonial</span>
           </a>
         </div>
@@ -231,12 +232,12 @@ const workflows = [
       <div class="logo-track">
         {[false, true].map((duplicate) => (
           <ul class="logo-list credential-list" aria-hidden={duplicate || undefined}>
-            <li><img src={'/proof/highlevel-admin.png'} alt="HighLevel Certified Admin" width="176" height="176" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/highlevel-admin.png')} alt="HighLevel Certified Admin" width="176" height="176" loading="lazy" /></li>
             {highLevelBadges.map(([file, name]) => <li><img src={`https://ghlhero.com/wp-content/uploads/2026/08/${file}.webp`} alt={`HighLevel ${name} badge`} width="128" height="128" loading="lazy" /></li>)}
-            <li><img src={'/proof/partner-1.jpg'} alt="Moodle" width="176" height="100" loading="lazy" /></li>
-            <li><img src={'/proof/partner-2.jpg'} alt="Joomla Solution Developer" width="176" height="100" loading="lazy" /></li>
-            <li><img src={'/proof/partner-3.jpg'} alt="Bing Ads Accredited Professional" width="176" height="100" loading="lazy" /></li>
-            <li><img src={'/proof/partner-4.jpg'} alt="Google Partner" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-1.jpg')} alt="Moodle" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-2.jpg')} alt="Joomla Solution Developer" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-3.jpg')} alt="Bing Ads Accredited Professional" width="176" height="100" loading="lazy" /></li>
+            <li><img src={sitePath('/proof/partner-4.jpg')} alt="Google Partner" width="176" height="100" loading="lazy" /></li>
           </ul>
         ))}
       </div>
@@ -256,7 +257,7 @@ const workflows = [
     </div>
     <div class="contact-panel">
       <p>Tell us what you’re trying to change. We’ll talk through what to tackle first and which tools can help.</p>
-      <a class="contact-link" href={'/contact/'}>Discuss Your Project <span aria-hidden="true">↗</span></a>
+      <a class="contact-link" href={sitePath('/contact/')}>Discuss Your Project <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>

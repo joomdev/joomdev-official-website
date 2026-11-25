@@ -1,7 +1,8 @@
 ---
+import { sitePath } from '../utils/site-path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Page not found" description="The requested page could not be found." noindex>
   <h1>Page not found</h1>
-  <p><a href="/">Return to the homepage</a></p>
+  <p><a href={sitePath('/')}>Return to the homepage</a></p>
 </BaseLayout>

@@ -1,4 +1,5 @@
 ---
+import { sitePath } from '../utils/site-path';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeSections from '../components/HomeSections.astro';
@@ -15,24 +16,24 @@ const clients = [
 <BaseLayout title="Web Design, App Development and Business Systems" description="JoomDev designs and develops websites, apps, and connected business systems." immersive>
   <section class="hero" aria-labelledby="hero-heading" data-hero>
     <header class="hero-nav">
-      <a class="brand" href="/" aria-label="JoomDev home"><img src="/joomdev-logo.svg" width="196" height="50" alt="JoomDev" /></a>
+      <a class="brand" href={sitePath('/')} aria-label="JoomDev home"><img src={sitePath('/joomdev-logo.svg')} width="196" height="50" alt="JoomDev" /></a>
       <nav aria-label="Primary">
-        <a href="/services/">Services</a>
-        <a href="/services/ai-integration/">Integrations</a>
+        <a href={sitePath('/services/')}>Services</a>
+        <a href={sitePath('/services/ai-integration/')}>Integrations</a>
       </nav>
-      <a class="button primary nav-cta" href="/contact/">Let’s talk <span aria-hidden="true">↗</span></a>
+      <a class="button primary nav-cta" href={sitePath('/contact/')}>Let’s talk <span aria-hidden="true">↗</span></a>
     </header>
     <div class="hero-copy">
       <h1 id="hero-heading">Websites and apps. <em>Built to work together.</em></h1>
       <p>Launch a new site or app, then connect it to your CRM, workflows, and AI tools.</p>
       <div class="actions">
-        <a class="button primary" href="/contact/">Talk to our team <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="/services/">Explore our services</a>
+        <a class="button primary" href={sitePath('/contact/')}>Talk to our team <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href={sitePath('/services/')}>Explore our services</a>
       </div>
       <nav class="service-links" aria-label="Explore by project type">
-        <a href="/services/#web">Web &amp; ecommerce</a>
-        <a href="/services/#apps">App development</a>
-        <a href="/services/#systems">CRM, AI &amp; automation</a>
+        <a href={sitePath('/services/#web')}>Web &amp; ecommerce</a>
+        <a href={sitePath('/services/#apps')}>App development</a>
+        <a href={sitePath('/services/#systems')}>CRM, AI &amp; automation</a>
       </nav>
     </div>
     <div class="art" aria-hidden="true">
@@ -53,7 +54,7 @@ const clients = [
           {[false, true].map((duplicate) => (
             <ul class="client-list" aria-hidden={duplicate ? 'true' : undefined}>
               {clients.map(({ name, file, width, height }) => (
-                <li><img src={`/clients/${file}`} alt={duplicate ? '' : name} width={width} height={height} loading="lazy" /></li>
+                <li><img src={sitePath(`/clients/${file}`)} alt={duplicate ? '' : name} width={width} height={height} loading="lazy" /></li>
               ))}
             </ul>
           ))}
