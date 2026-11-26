@@ -1,0 +1,36 @@
+---
+import { sitePath } from '../utils/site-path';
+---
+<section class="section contact" aria-labelledby="contact-title">
+  <div class="wrap-wide">
+    <div class="contact-intro">
+      <h2 id="contact-title">What’s getting in the way of <em>your next project?</em></h2>
+      <ul>
+        <li>Your website has outgrown what it was built to do.</li>
+        <li>You have an app idea and need a practical first release.</li>
+        <li>Your team keeps moving the same data between tools.</li>
+        <li>You want to use AI in a workflow you already rely on.</li>
+      </ul>
+    </div>
+    <div class="contact-panel">
+      <p>Tell us what you’re trying to change. We’ll talk through what to tackle first and which tools can help.</p>
+      <a class="button button-soft" href={sitePath('/contact/')}>Discuss Your Project <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding-block: clamp(3rem, 6.4vw, 5.75rem); }
+  h2, p { margin: 0; }
+  h2 { scroll-margin-top: 1.25rem; }
+  .contact { background: var(--color-surface-tinted); color: #142449; }
+  .contact-intro { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: clamp(1.3rem,6vw,5rem); }
+  .contact-intro h2 { max-width: 16ch; }
+  .contact-intro em { color: #244aaa; }
+  .contact-intro ul { list-style: none; margin: 0; padding: 0; }
+  .contact-intro li { border-top: 1px solid #c1d0eb; padding: .85rem 0; }
+  .contact-intro li:last-child { border-bottom: 1px solid #c1d0eb; }
+  .contact-panel { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem 2rem; margin-top: clamp(1.5rem,4vw,3rem); border-radius: var(--radius-card); background: #12264f; padding: clamp(1.2rem,4vw,2.25rem); color: #eff4ff; }
+  .contact-panel p { max-width: 49ch; }
+  @media (max-width: 680px) { .contact-intro { grid-template-columns: 1fr; } }
+</style>

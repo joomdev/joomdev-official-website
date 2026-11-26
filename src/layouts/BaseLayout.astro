@@ -1,7 +1,7 @@
 ---
-import { sitePath } from '../utils/site-path';
 import '../styles/global.css';
 import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 
 interface Props {
   title: string;
@@ -23,20 +23,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     {indexable ? <link rel="canonical" href={canonical} /> : <meta name="robots" content="noindex" />}
   </head>
-  <body>
+  <body class:list={{ 'dark-intro': immersive }}>
     <a class="skip-link" href="#content">Skip to content</a>
-    {!immersive && <header class="site-header">
-      <div class="wrap navigation">
-        <a class="brand" href={sitePath('/')}>JoomDev</a>
-        <nav aria-label="Main navigation">
-          <a href={sitePath('/services/')}>Services</a>
-          <a href={sitePath('/contact/')}>Contact</a>
-        </nav>
-      </div>
-    </header>}
-    <main class:list={immersive ? "immersive" : "wrap"} id="content">
+    <SiteHeader />
+    <main class:list={immersive ? 'immersive' : 'wrap'} id="content" tabindex="-1">
       <slot />
     </main>
     <SiteFooter />
   </body>
 </html>
+
+<style>
+  :global(html) { scroll-padding-top: 7rem; }
+  .dark-intro { background: linear-gradient(var(--color-hero) 0 10rem, var(--color-surface) 10rem); }
+  .immersive { padding: 0; }
+  .skip-link:focus { position: fixed; z-index: 6; top: .75rem; left: .75rem; background: var(--color-surface); padding: .5rem .75rem; }
+</style>

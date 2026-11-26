@@ -8,7 +8,7 @@ const serviceLinks = [
   ['https://www.joomdev.com/services/aws-cloud-consulting-services/', 'AWS Cloud Consulting'],
 ];
 const companyLinks = [
-  ['https://www.joomdev.com/about-us/', 'About JoomDev'],
+  ['/about-us/', 'About JoomDev'],
   ['https://www.joomdev.com/career/', 'Careers'],
   ['https://www.joomdev.com/partners/', 'Partners'],
   ['/contact/', 'Contact Us'],
@@ -26,23 +26,23 @@ const policies = [
 ];
 ---
 <footer class="footer">
-  <div class="footer-wrap">
+  <div class="footer-wrap wrap-wide">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href={sitePath('/')} aria-label="JoomDev home"><img src={sitePath('/joomdev-logo.svg')} width="157" height="40" alt="JoomDev" loading="lazy" /></a>
         <p>Websites, apps, and business systems built to work together.</p>
       </div>
       <nav aria-label="Footer services">
-        <h2>Services</h2><ul>{serviceLinks.map(([href,label]) => <li><a href={sitePath(href)}>{label}</a></li>)}</ul>
+        <h2 class="type-label">Services</h2><ul>{serviceLinks.map(([href,label]) => <li><a href={sitePath(href)}>{label}</a></li>)}</ul>
       </nav>
       <nav aria-label="Footer company">
-        <h2>Company</h2><ul>{companyLinks.map(([href,label]) => <li><a href={sitePath(href)}>{label}</a></li>)}</ul>
+        <h2 class="type-label">Company</h2><ul>{companyLinks.map(([href,label]) => <li><a href={sitePath(href)}>{label}</a></li>)}</ul>
       </nav>
       <nav aria-label="Footer resources">
-        <h2>Resources</h2><ul>{resources.map(([href,label]) => <li><a href={href}>{label}</a></li>)}</ul>
+        <h2 class="type-label">Resources</h2><ul>{resources.map(([href,label]) => <li><a href={href}>{label}</a></li>)}</ul>
       </nav>
       <div class="footer-contact">
-        <h2>Talk to Us</h2>
+        <h2 class="type-label">Talk to Us</h2>
         <ul><li><a href="mailto:info@joomdev.com">info@joomdev.com</a></li><li><a href="tel:+18662761994">+1 (866) 276-1994</a></li></ul>
         <div class="footer-social">
           <a href="https://www.linkedin.com/company/joomdev-corporation/" aria-label="JoomDev on LinkedIn"><span aria-hidden="true">in</span></a>
@@ -58,23 +58,22 @@ const policies = [
 </footer>
 <style>
   .footer { background: radial-gradient(ellipse at 12% 0,#192f66,#080f21 58%); color: #e7efff; }
-  .footer-wrap { width: min(73rem,calc(100% - 2.5rem)); margin-inline: auto; padding-top: clamp(2rem,5vw,3.75rem); }
+  .footer-wrap { padding-top: clamp(2rem,5vw,3.75rem); }
   .footer-grid { display: grid; grid-template-columns: 1.25fr 1.05fr .72fr .8fr 1fr; gap: 1.5rem; padding-bottom: 2rem; }
   nav { display: block; }
-  h2 { margin: 0 0 .8rem; font-size: .95rem; font-weight: 700; color: #fff; }
-  a { color: #c8d7f0; text-decoration: none; overflow-wrap: anywhere; }
-  a:hover { color: #fff; text-decoration: underline; }
-  a:focus-visible { outline-color: #b5ddff; }
+  h2 { margin: 0 0 .8rem; color: var(--color-surface); }
+  a { --link-hover-color: var(--color-surface); color: #c8d7f0; text-decoration: none; overflow-wrap: anywhere; }
+  a:focus-visible { outline-color: var(--color-accent); }
   ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .42rem; }
-  p, li, .footer-contact a { font-size: .9rem; }
+  p, li, .footer-contact a { font-size: var(--size-small); }
   .footer-brand p { max-width: 25ch; margin-top: .8rem; color: #c8d7f0; }
   .footer-brand a { display: inline-flex; background: #f8faff; padding: .4rem .65rem; border-radius: .4rem; }
   .footer-brand img { display: block; width: 8.5rem; height: auto; }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: .5rem; border-top: 1px solid #2a3b59; padding-block: 1rem; font-size: .84rem; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: .5rem; border-top: 1px solid #2a3b59; padding-block: 1rem; font-size: var(--size-caption); }
   .footer-bottom nav ul { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
   .footer-bottom { flex-wrap: wrap; }
   .footer-social { display: flex; gap: .45rem; margin-top: .7rem; }
-  .footer-social a { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid #5b719e; border-radius: 50%; font-weight: 700; }
+  .footer-social a { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid #5b719e; border-radius: 50%; font-weight: var(--weight-bold); }
   @media (max-width: 850px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 440px) { .footer-grid { grid-template-columns: 1fr; } }
 </style>

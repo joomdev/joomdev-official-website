@@ -1,20 +1,242 @@
 ---
-import { sitePath } from '../../utils/site-path';
+import { Image } from 'astro:assets';
+import developmentPhoto from '../../assets/services-development.webp';
+import ProjectCta from '../../components/ProjectCta.astro';
+import ServiceIcon from '../../components/ServiceIcon.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sitePath } from '../../utils/site-path';
+
+const officialServices = 'https://www.joomdev.com/services';
+const categories = [
+  { id: 'web', title: 'Web & Ecommerce' },
+  { id: 'apps', title: 'App Development' },
+  { id: 'ai', title: 'AI Development' },
+  { id: 'systems', title: 'CRM & Automation' },
+  { id: 'cloud', title: 'Cloud & Data' },
+];
+
+const webGroups = [
+  {
+    title: 'Websites', icon: 'browser' as const,
+    description: 'Design, rebuild, migrate, or maintain a site your team can manage.',
+    links: [
+      ['WordPress development', 'wordpress-development-services'],
+      ['Joomla development', 'joomla-development-services'],
+      ['Joomla migration', 'joomla-migration'],
+      ['WordPress maintenance', 'wordpress-website-maintenance-services'],
+      ['WordPress plugin development', 'wordpress-plugin-development-services'],
+    ],
+  },
+  {
+    title: 'Online stores', icon: 'store' as const,
+    description: 'Set up your catalog, improve checkout, and make orders easier to manage.',
+    links: [
+      ['Shopify development', 'shopify-development-services'],
+      ['WooCommerce development', 'woocommerce-development-services'],
+    ],
+  },
+];
+
+const apps = [
+  { title: 'iOS app development', icon: 'ios' as const, description: 'Build for iPhone and iPad with an experience that feels at home on Apple devices.', slug: 'ios-app-development-services' },
+  { title: 'Android app development', icon: 'android' as const, description: 'Build for Android and account for the variety of devices your users bring.', slug: 'android-app-development-services' },
+  { title: 'Hybrid app development', icon: 'hybrid' as const, description: 'Use a shared codebase to launch on iOS and Android and simplify ongoing updates.', slug: 'hybrid-app-development-services' },
+];
+
+const crmPlatforms = [
+  ['Quickbase', 'quickbase-services'],
+  ['Zoho'],
+  ['HubSpot'],
+  ['GoHighLevel', 'ghl-consultant'],
+  ['Salesforce', 'salesforce-consulting-services'],
+];
+
+const automationTools = [
+  ['n8n'],
+  ['Zapier', 'zapier-experts'],
+  ['Make'],
+  ['Pipedream', 'pipedream-integrations'],
+];
+
+const cloudServices = [
+  { title: 'AWS cloud consulting', icon: 'cloud' as const, description: 'Plan infrastructure, migrate workloads, and decide how to manage your AWS environment.', slug: 'aws-cloud-consulting-services' },
+  { title: 'Business intelligence & reporting', icon: 'data' as const, description: 'Bring data from different tools into one view, schedule data imports, and build reports around the questions your team needs to answer.', slug: 'business-intelligence-consulting' },
+];
 ---
-<BaseLayout title="Services" description="Explore JoomDev’s website, ecommerce, app development, CRM, AI, and automation services.">
-  <h1>Services</h1>
-  <section id="web">
-    <h2>Web design &amp; ecommerce</h2>
-    <p>Design a new site, rebuild an existing one, or develop an online store. We work with WordPress, Joomla, and ecommerce platforms.</p>
+<BaseLayout title="Services" description="Explore JoomDev’s web, ecommerce, app, AI, CRM, automation, cloud, and data services." immersive>
+  <section class="hero" aria-labelledby="services-title">
+    <div class="wrap hero-layout">
+      <div>
+        <p class="page-label type-label">Services</p>
+        <h1 class="type-display" id="services-title">Find the right expertise <em>for your project.</em></h1>
+        <p class="type-lead">Compare platforms for a storefront, choose how to build a mobile app, or find help with a CRM or reporting problem. Browse the services below to see what each project can involve.</p>
+      </div>
+      <div class="hero-photo">
+        <!-- Pexels photo 3861958, used under the Pexels license. -->
+        <Image src={developmentPhoto} alt="" widths={[550, 1100]} sizes="(max-width: 720px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+      </div>
+    </div>
   </section>
-  <section id="apps">
-    <h2>App development</h2>
-    <p>Build a web or mobile app for your customers or for the people who run your business.</p>
+
+  <nav class="category-nav" aria-label="Service categories">
+    <ul class="wrap">
+      {categories.map(({ id, title }) => (
+        <li><a href={`#${id}`}>{title}<span aria-hidden="true">↓</span></a></li>
+      ))}
+    </ul>
+  </nav>
+
+  <section class="service-section" aria-labelledby="web">
+    <div class="wrap service-layout">
+      <div>
+        <h2 id="web">Web &amp; Ecommerce</h2>
+        <p>Choose a platform based on what you sell, how often the site changes, and who’ll manage it after launch.</p>
+      </div>
+      <div class="card-grid">
+        {webGroups.map(({ title, icon, description, links }) => (
+          <div class="service-card">
+            <ServiceIcon kind={icon} />
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <ul class="link-list">
+              {links.map(([label, slug]) => (
+                <li><a href={`${officialServices}/${slug}/`}>{label}<span aria-hidden="true">↗</span></a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
-  <section id="systems">
-    <h2>CRM, AI &amp; automation</h2>
-    <p>Connect your CRM and business tools, automate manual processes, or integrate AI into existing workflows.</p>
-    <a href={sitePath('/services/ai-integration/')}>Explore AI integration</a>
+
+  <section class="service-section tinted" aria-labelledby="apps">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2 id="apps">App Development</h2>
+        <p>Develop a web app for browser-based work, or choose a mobile approach based on the devices your users need, the features you want, and how you’ll maintain the app.</p>
+        <a class="text-link" href={`${officialServices}/mobile-app-development-services/`}>Explore mobile app development <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="card-grid app-grid">
+        {apps.map(({ title, icon, description, slug }) => (
+          <a class="service-card feature-link" href={`${officialServices}/${slug}/`}>
+            <ServiceIcon kind={icon} />
+            <h3>{title}<span aria-hidden="true">↗</span></h3>
+            <p>{description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
+
+  <section class="service-section ai" aria-labelledby="ai">
+    <div class="wrap service-layout">
+      <div><ServiceIcon kind="ai" /><h2 id="ai">AI Development</h2></div>
+      <div>
+        <h3>AI integration &amp; consulting</h3>
+        <p>Identify where AI can help, decide what people should review, and connect it to the workflow. For example, an AI receptionist can log a call in your CRM and flag it for the right person to follow up.</p>
+        <a class="button button-primary" href={sitePath('/services/ai-integration/')}>Explore AI integration &amp; consulting <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section" aria-labelledby="systems">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2 id="systems">CRM &amp; Automation</h2>
+        <p>Decide what your team needs to track in the CRM, then automate the handoffs and updates that happen between systems.</p>
+      </div>
+      <div class="card-grid">
+        <div class="service-card">
+          <ServiceIcon kind="crm" />
+          <h3>CRM &amp; low-code platforms</h3>
+          <p>Set up lead routing, pipelines, and internal tools around how your team works.</p>
+          <ul class="platform-list">
+            {crmPlatforms.map(([label, slug]) => (
+              <li>{slug ? <a href={`${officialServices}/${slug}/`}>{label} <span aria-hidden="true">↗</span></a> : label}</li>
+            ))}
+          </ul>
+          <a class="text-link" href={`${officialServices}/crm-consulting-services/`}>Explore CRM consulting <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="service-card">
+          <ServiceIcon kind="automation" />
+          <h3>Workflow automation</h3>
+          <p>Connect apps so a form submission, booking, or status change can trigger the next step.</p>
+          <ul class="platform-list">
+            {automationTools.map(([label, slug]) => (
+              <li>{slug ? <a href={`${officialServices}/${slug}/`}>{label} <span aria-hidden="true">↗</span></a> : label}</li>
+            ))}
+          </ul>
+          <a class="text-link" href={`${officialServices}/business-process-automation/`}>Explore business process automation <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-section tinted" aria-labelledby="cloud">
+    <div class="wrap service-layout">
+      <div>
+        <h2 id="cloud">Cloud &amp; Data</h2>
+        <p>Plan where your systems run and how the data they produce reaches the people who need it.</p>
+      </div>
+      <div class="card-grid">
+        {cloudServices.map(({ title, icon, description, slug }) => (
+          <a class="service-card feature-link" href={`${officialServices}/${slug}/`}>
+            <ServiceIcon kind={icon} />
+            <h3>{title}<span aria-hidden="true">↗</span></h3>
+            <p>{description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ProjectCta />
 </BaseLayout>
+
+<style>
+  h1, h2, h3, p { margin: 0; }
+  ul { margin-block: 0; padding: 0; list-style: none; }
+  h1 em { color: var(--color-accent); }
+  h1 + p, h2 + p, h3 + p { margin-top: .85rem; }
+  .hero, .ai { color: var(--color-text-inverse); }
+  .hero { overflow: hidden; background: var(--color-hero); }
+  .hero-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: clamp(2rem, 6vw, 5rem); padding-block: clamp(3rem, 7vw, 6rem); }
+  .hero .page-label { margin-bottom: .85rem; color: var(--color-accent); }
+  .hero h1 + p { max-width: 48ch; color: var(--color-text-inverse-muted); }
+  .hero-photo { position: relative; isolation: isolate; margin: 1rem 1rem 1rem 0; }
+  .hero-photo::before { content: ''; position: absolute; z-index: -1; top: -8%; right: -4%; width: 54%; aspect-ratio: 1; transform: rotate(45deg); border: 1px solid #6588dc; border-radius: 15%; background: #203b77; }
+  .hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-card); }
+  .category-nav { padding-block: .75rem; border-bottom: 1px solid var(--color-border); background: var(--color-surface-muted); }
+  .category-nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem .75rem; }
+  .category-nav a { display: flex; align-items: center; gap: .55rem; min-height: 2.75rem; padding-inline: .65rem; border-radius: .55rem; --link-color: var(--color-link-strong); font-size: var(--size-small); font-weight: var(--weight-heading); text-decoration: none; }
+  .category-nav a:hover { background: #e5edff; }
+  .service-section { padding-block: clamp(2.75rem, 6.5vw, 5.75rem); }
+  .service-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.5fr); align-items: start; gap: clamp(1.5rem, 5vw, 4rem); }
+  .service-section p { color: var(--color-text-muted); }
+  .section-intro { margin-bottom: 1.5rem; }
+  .tinted { background: var(--color-surface-muted); }
+  .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .app-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .service-card { padding: clamp(1rem, 2.5vw, 1.65rem); border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); }
+  .link-list { margin-top: 1rem; }
+  .link-list li { border-top: 1px solid #e0e8f6; }
+  .link-list a, .feature-link h3 { display: flex; align-items: baseline; justify-content: space-between; gap: .65rem; }
+  .link-list a { padding-block: .6rem; --link-color: var(--color-link-strong); font-weight: var(--weight-heading); text-decoration: none; }
+  .feature-link { display: block; --link-color: var(--color-link-strong); text-decoration: none; }
+  .feature-link:hover { border-color: #7295d8; }
+  .platform-list { display: flex; flex-wrap: wrap; gap: .35rem .5rem; margin-top: 1rem; }
+  .platform-list li { padding: .28rem .55rem; border-radius: .4rem; background: var(--color-surface-tinted); color: #172f5b; font-size: var(--size-small); font-weight: var(--weight-heading); }
+  .platform-list a { --link-color: var(--color-link-strong); }
+  .text-link { display: inline-block; margin-top: .9rem; --link-color: var(--color-link-strong); font-weight: var(--weight-heading); }
+  .ai .button { margin-top: 1.25rem; }
+  .ai { background: var(--color-navy); }
+  .ai h3 { color: var(--color-accent); }
+  .ai p { color: var(--color-text-inverse-muted); }
+  @media (max-width: 720px) {
+    .hero-layout, .service-layout { grid-template-columns: 1fr; }
+    .category-nav a { padding-inline: .45rem; }
+  }
+  @media (max-width: 560px) {
+    .card-grid, .app-grid { grid-template-columns: 1fr; }
+  }
+</style>

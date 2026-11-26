@@ -1,8 +1,59 @@
 ---
+import { Image } from 'astro:assets';
+import '../styles/contact.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import collaboration from '../assets/about-collaboration.webp';
 ---
-<BaseLayout title="Contact" description="Talk to JoomDev about an AI integration, automation, or website project.">
-  <h1>Contact JoomDev</h1>
-  <p>Tell us what you’re building and which systems your team uses.</p>
-  <a href="mailto:info@joomdev.com">Email JoomDev</a>
+<BaseLayout title="Contact Us" description="Tell JoomDev about your project and book a consultation for web, app, and business systems development." immersive>
+  <div class="contact-page">
+    <div class="project-intake">
+      <div class="wrap-wide intake-grid">
+        <header class="intro">
+          <p class="eyebrow">Start a project</p>
+          <h1>What are you <em>building next?</em></h1>
+          <p class="type-lead">A new website, a better app, or a workflow that’s outgrown spreadsheets. Tell us what you need, and we’ll talk through the right next step.</p>
+        </header>
+
+        <section class="form-panel" aria-labelledby="form-title">
+          <header class="form-heading">
+            <h2 id="form-title">Share your project details</h2>
+            <p>Tell us what you’d like to build or improve. If you’re replacing an existing tool, let us know where it falls short.</p>
+          </header>
+          <ContactForm />
+        </section>
+
+        <figure class="client-proof">
+          <Image src={collaboration} alt="" widths={[480, 720, 960]} sizes="(max-width: 760px) 100vw, 36rem" />
+          <figcaption>
+            <blockquote>“…from the very first moment we met them, we knew that our search was over.”</blockquote>
+            <p><strong>Alex Shvarts</strong><span>FundKite</span></p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <section class="contact-details" aria-labelledby="details-title">
+      <div class="wrap-wide details-grid">
+        <div>
+          <h2 id="details-title">Other ways to reach us</h2>
+        </div>
+        <div>
+          <h3>General enquiries</h3>
+          <ul>
+            <li><a href="mailto:info@joomdev.com">info@joomdev.com</a></li>
+            <li><a href="tel:+18662761994">+1 (866) 276-1994</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Head office</h3>
+          <address>
+            Suite 108, Vishwa Sadan<br />
+            Janakpuri District Center<br />
+            New Delhi, Delhi 110058, India
+          </address>
+        </div>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  instanceId?: string;
+}
+
+const { instanceId = 'contact' } = Astro.props;
+const formId = 'VC28oR61U1aMdIc489LL';
+const iframeId = `inline-${formId}-${instanceId}`;
+---
+<iframe
+  src={`https://api.ghlhero.com/widget/form/${formId}`}
+  id={iframeId}
+  title="Contact Form"
+  data-layout='{"id":"INLINE"}'
+  data-trigger-type="alwaysShow"
+  data-trigger-value=""
+  data-activation-type="alwaysActivated"
+  data-activation-value=""
+  data-deactivation-type="neverDeactivate"
+  data-deactivation-value=""
+  data-form-name="Contact Form"
+  data-height="1413"
+  data-layout-iframe-id={iframeId}
+  data-form-id={formId}
+  data-cookie-consent="true"
+  data-cookie-consent-provider="auto"
+  height="1413"
+></iframe>
+<script is:inline src="https://api.ghlhero.com/js/form_embed.js" defer></script>
+
+<style>
+  iframe { display: block; width: 100%; border: 0; border-radius: 30px; }
+</style>

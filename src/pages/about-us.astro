@@ -1,0 +1,142 @@
+---
+import { Image } from 'astro:assets';
+import collaboration from '../assets/about-collaboration.webp';
+import Certifications from '../components/Certifications.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sitePath } from '../utils/site-path';
+
+const team = [
+  { name: 'Praveen Mishra', role: 'Human Resources', image: 'praveen' },
+  { name: 'Ashish Singh', role: 'Senior PHP Developer', image: 'ashish' },
+  { name: 'Pooja Tank', role: 'React Native Developer', image: 'pooja' },
+  { name: 'Chandan Deep', role: 'Senior Web Designer', image: 'chandan' },
+  { name: 'Naveen Kumar', role: 'Project Manager', image: 'naveen' },
+  { name: 'Richard Mendes', role: 'Full-Stack Developer', image: 'richard' },
+  { name: 'Anikesh Tiwari', role: 'Developer', image: 'anikesh' },
+  { name: 'Sumanpreet Kaur', role: 'Web Designer', image: 'sumanpreet' },
+];
+
+---
+<BaseLayout title="About Us" description="Meet JoomDev, the digital product team behind websites, apps, and the systems that keep businesses running." immersive>
+  <section class="about-hero dark" aria-labelledby="about-title">
+    <div class="wrap hero-layout">
+      <div class="hero-copy">
+        <p class="section-label type-label">About JoomDev</p>
+        <h1 class="type-display" id="about-title">We build for the people <em>who do the work.</em></h1>
+        <p class="type-lead">A first purchase, a mobile signup, a lead reaching the right person. We design and build websites, ecommerce stores, and apps around moments like these, then connect them to the CRM, automation, and AI tools your team uses to keep the work moving.</p>
+        <a class="button button-primary" href={sitePath('/services/')}>Explore our services <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-photo"><Image src={collaboration} alt="" loading="eager" /></div>
+    </div>
+  </section>
+
+  <section class="vision" aria-labelledby="vision-title">
+    <div class="wrap split">
+      <div>
+        <p class="section-label type-label">Our vision</p>
+        <h2 id="vision-title">Make good software <em>easier to live with.</em></h2>
+      </div>
+      <div class="vision-copy">
+        <p class="type-lead">We want businesses to have software that customers can use with confidence, teams can run day to day, and the business can adapt as it grows.</p>
+        <p>That takes care at both ends of a project. We pay attention to what a customer sees on a screen and what the team needs to happen after someone clicks, submits, or buys. That’s where a well-designed product can make the whole business easier to work with.</p>
+        <a href={sitePath('/#work-title')}>See the work in practice <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder dark" aria-labelledby="founder-title">
+    <div class="wrap split founder-layout">
+      <figure class="founder-profile">
+        <img src={sitePath('/about/chetan.webp')} alt="" width="640" height="640" loading="lazy" decoding="async" />
+        <figcaption><strong>Chetan Madaan</strong><span>Founder, JoomDev</span></figcaption>
+      </figure>
+      <div>
+        <p class="section-label type-label">Our founder</p>
+        <h2 id="founder-title">Start with what <em>needs to get easier.</em></h2>
+        <p>Chetan’s approach starts with a close look at the people who’ll use the product. For an online store, that means understanding how customers decide to buy and how staff handle orders. For an app, it means finding the few tasks the first release needs to do well. For an internal workflow, it means seeing where people lose time or have to do the same work twice.</p>
+        <p>Those conversations guide what we build first and how we judge whether it’s ready. A good launch gives customers a clearer way to get things done and leaves the team with a product they understand and can keep improving.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="people" aria-labelledby="team-title">
+    <div class="wrap">
+      <h2 id="team-title">Meet the team</h2>
+      <ul class="team-grid">
+        {team.map(({ name, role, image }) => (
+          <li>
+            <div class="team-photo"><img src={sitePath(`/about/${image}.webp`)} alt="" width="520" height="400" loading="lazy" decoding="async" /></div>
+            <div class="team-details"><h3 class="type-card-title">{name}</h3><p>{role}</p></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <div class="credentials-band">
+    <div class="wrap"><Certifications contained /></div>
+  </div>
+
+  <section class="journey dark" aria-labelledby="journey-title">
+    <div class="wrap journey-layout">
+      <div>
+        <h2 id="journey-title">Be part of our journey.</h2>
+        <p>Help us turn real problems into websites, apps, and tools people can use every day.</p>
+      </div>
+      <a class="button button-primary" href="https://www.joomdev.com/career/">View open positions <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  section, .credentials-band { padding-block: clamp(3rem, 7vw, 6rem); }
+  .dark { background: var(--color-navy); color: var(--color-text-inverse); }
+  .dark p { color: var(--color-text-inverse-muted); }
+  h1, h2, h3, p, figure { margin: 0; }
+  h1 em { color: var(--color-accent); }
+  h1 + p, h2 + p, p + p { margin-top: 1rem; }
+  .section-label { margin-bottom: .85rem; color: #244890; }
+  .dark .section-label { color: var(--color-accent); }
+  .about-hero { overflow: hidden; background: var(--color-hero); }
+  .hero-layout, .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(1.5rem, 6vw, 5rem); }
+  .hero-copy p:not(.section-label) { max-width: 49ch; }
+  .hero-photo { position: relative; isolation: isolate; margin: 1rem 1rem 1rem 0; }
+  .hero-photo::before { content: ''; position: absolute; z-index: -1; right: -6%; top: -12%; width: 58%; aspect-ratio: 1; border: 1px solid #6588dc; border-radius: 15%; transform: rotate(45deg); background: #203b77; }
+  .hero-photo img { display: block; width: 100%; height: auto; border-radius: var(--radius-card); }
+  .hero-copy .button { margin-top: 1.5rem; }
+  .vision { position: relative; isolation: isolate; overflow: hidden; background: var(--color-surface-tinted); }
+  .vision::before, .vision::after { content: ''; position: absolute; z-index: -1; left: max(-9rem, calc((100% - 78rem) / 2)); bottom: -55%; width: clamp(13rem, 32vw, 27rem); aspect-ratio: 1; border: 1px solid #c9daf6; border-radius: 18%; transform: rotate(45deg); }
+  .vision::after { translate: -2.25rem 1.65rem; background: #e3edff; z-index: -2; }
+  .vision .split { align-items: start; }
+  .vision h2, .founder h2 { max-width: 15ch; }
+  .vision h2 em { color: #244890; }
+  .vision-copy { border-left: 2px solid #b5c9f2; padding-left: clamp(1.25rem, 3vw, 2.25rem); }
+  .vision-copy p:first-child { font-weight: var(--weight-heading); }
+  .vision-copy a { display: inline-block; margin-top: 1rem; font-weight: var(--weight-heading); }
+  .founder-layout { grid-template-columns: minmax(12rem, .7fr) minmax(0, 1.3fr); }
+  .founder { isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 15% 55%, #162c58, var(--color-navy) 65%); }
+  .founder h2 em { color: var(--color-accent); }
+  .founder-profile { position: relative; isolation: isolate; margin-inline: .75rem; }
+  .founder-profile::before { content: ''; position: absolute; z-index: -1; top: 2%; left: -7%; width: 80%; aspect-ratio: 1; border: 1px solid #587bb7; border-radius: 16%; transform: rotate(-12deg); background: #21396b; }
+  .founder-profile img { display: block; width: 100%; height: auto; border: 1px solid #587bb7; border-radius: var(--radius-card); box-sizing: border-box; }
+  .founder-profile figcaption { margin-top: .8rem; }
+  .founder-profile span { display: block; color: var(--color-text-inverse-muted); font-size: var(--size-small); }
+  .people h2 { display: flex; align-items: center; gap: 1.1rem; }
+  .people h2::after { content: ''; flex: 1; height: 1px; background: #dbe6fa; }
+  .team-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 1.4rem); margin: clamp(1.4rem, 3vw, 2.25rem) 0 0; padding: 0; list-style: none; }
+  .team-grid li { overflow: hidden; padding: .5rem; border: 1px solid var(--color-border); border-radius: 1.1rem; background: #f5f8ff; }
+  .team-grid li:nth-child(even) { background: var(--color-surface-tinted); }
+  .team-photo { overflow: hidden; border-radius: .75rem; background: #dbe6fa; }
+  .team-photo img { display: block; width: 100%; height: auto; aspect-ratio: 13 / 10; object-fit: cover; }
+  .team-details { padding: .85rem .55rem .55rem; }
+  .team-grid p { margin-top: .2rem; font-size: var(--size-small); color: #405779; }
+  .credentials-band { background: var(--color-surface-muted); border-top: 1px solid var(--color-border); }
+  .journey-layout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.35rem 2rem; }
+  @media (max-width: 720px) {
+    .hero-layout, .split, .founder-layout { grid-template-columns: minmax(0, 1fr); }
+    .hero-photo { margin-top: .5rem; }
+    .founder-profile { max-width: 18rem; }
+    .founder-layout > div { grid-row: 1; }
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

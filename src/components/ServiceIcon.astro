@@ -1,0 +1,39 @@
+---
+interface Props {
+  kind: 'browser' | 'store' | 'ios' | 'android' | 'hybrid' | 'ai' | 'crm' | 'automation' | 'cloud' | 'data';
+}
+
+const { kind } = Astro.props;
+---
+<span class:list={['service-icon', kind]} aria-hidden="true"><span class="glyph"></span></span>
+
+<style>
+  .service-icon { position: relative; isolation: isolate; display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: .8rem; color: var(--color-link-strong); }
+  .service-icon::before { content: ''; position: absolute; z-index: -1; inset: .4rem; transform: rotate(45deg); border: 1px solid var(--color-border); border-radius: .55rem; background: var(--color-surface-tinted); }
+  .glyph, .glyph::before, .glyph::after { box-sizing: border-box; }
+  .glyph { position: relative; display: block; }
+  .browser .glyph { width: 1.5rem; height: 1.1rem; border: 1.5px solid; border-radius: .2rem; }
+  .browser .glyph::before { content: ''; position: absolute; inset: .2rem 0 auto; border-top: 1.5px solid; }
+  .store .glyph { width: 1.15rem; height: .95rem; margin-top: .35rem; border: 1.5px solid; border-radius: .15rem; }
+  .store .glyph::before { content: ''; position: absolute; width: .55rem; height: .45rem; inset: -.45rem 0 auto; margin-inline: auto; border: 1.5px solid; border-bottom: 0; border-radius: .3rem .3rem 0 0; }
+  .ios .glyph, .android .glyph, .hybrid .glyph { width: .85rem; height: 1.45rem; border: 1.5px solid; border-radius: .23rem; }
+  .ios .glyph::before, .android .glyph::before { content: ''; position: absolute; inset: .16rem 0 auto; margin-inline: auto; width: .33rem; height: .1rem; border-radius: 1rem; background: currentColor; }
+  .android .glyph::before { width: .12rem; height: .12rem; }
+  .android .glyph::after { content: ''; position: absolute; inset: auto .12rem .17rem; border-top: 1px solid; }
+  .hybrid .glyph { transform: translate(.17rem, .1rem); background: var(--color-surface-tinted); }
+  .hybrid .glyph::before { content: ''; position: absolute; z-index: -1; inset: -.27rem .24rem .18rem -.36rem; border-top: 1.5px solid; border-left: 1.5px solid; border-radius: .23rem 0 0 .23rem; }
+  .ai { color: var(--color-accent); }
+  .ai::before { background: var(--color-header); border-color: var(--color-border-inverse); }
+  .ai .glyph { width: 1.55rem; height: 1.55rem; background: currentColor; clip-path: polygon(50% 0, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0 50%, 37% 37%); }
+  .crm .glyph { width: 1.5rem; height: 1rem; border: 1.5px solid; border-radius: .2rem; }
+  .crm .glyph::before { content: ''; position: absolute; top: .27rem; left: .2rem; width: .28rem; height: .28rem; border-radius: 50%; background: currentColor; }
+  .crm .glyph::after { content: ''; position: absolute; top: .25rem; right: .18rem; width: .48rem; height: .34rem; border-block: 1px solid; }
+  .automation .glyph { width: 1.18rem; height: 1.18rem; border: 1.5px dashed; border-radius: 50%; }
+  .automation .glyph::before, .automation .glyph::after { content: ''; position: absolute; width: .33rem; height: .33rem; border: 1px solid; border-radius: 50%; background: var(--color-surface-tinted); }
+  .automation .glyph::before { inset: -.09rem auto auto -.09rem; }
+  .automation .glyph::after { inset: auto -.09rem -.09rem auto; }
+  .cloud .glyph { width: 1.5rem; height: .7rem; margin-top: .25rem; border: 1.5px solid; border-radius: 1rem; }
+  .cloud .glyph::before { content: ''; position: absolute; top: -.38rem; left: .35rem; width: .64rem; height: .47rem; border: 1.5px solid; border-bottom: 0; border-radius: 1rem 1rem 0 0; background: var(--color-surface-tinted); }
+  .data .glyph { width: 1.45rem; height: 1.2rem; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+  .data .glyph::before { content: ''; position: absolute; inset: .05rem .1rem .15rem .18rem; background: currentColor; clip-path: polygon(0 65%, 20% 65%, 20% 100%, 40% 100%, 40% 35%, 60% 35%, 60% 100%, 80% 100%, 80% 0, 100% 0, 100% 100%, 0 100%); }
+</style>
